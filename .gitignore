@@ -1,0 +1,12 @@
+/.cache/
+/eln-cache/
+/elpa/
+/history
+/transient/
+/auto-save-list/
+/eshell/
+/projects
+/straight/
+/emacs-backup/
+/tree-sitter/
+org-roam.db
