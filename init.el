@@ -59,7 +59,7 @@
    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
 
 ;; If you want to turn off the welcome screen, uncomment this
-;(setq inhibit-splash-screen t)
+(setq inhibit-splash-screen t)
 ;; font setup
 (defun load-font-setup()
   (cond ((eq window-system 'pgtk)
@@ -226,10 +226,55 @@ If the new path's directories does not exist, create them."
 ;;;   Theme
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package ef-themes
+  :ensure t
+  :bind ("C-c t" . ef-themes-toggle)
+  :init
+  ;; set two specific themes and switch between them
+  (setq ef-themes-to-toggle '(ef-summer ef-winter))
+  ;; set org headings and function syntax
+  (setq ef-themes-headings
+        '((0 . (bold 1))
+          (1 . (bold 1))
+          (2 . (rainbow bold 1))
+          (3 . (rainbow bold 1))
+          (4 . (rainbow bold 1))
+          (t . (rainbow bold 1))))
+  (setq ef-themes-region '(intense no-extend neutral))
+  ;; Disable all other themes to avoid awkward blending:
+  (mapc #'disable-theme custom-enabled-themes)
 
-(use-package emacs
+  ;; Load the theme of choice:
+  ;; The themes we provide are recorded in the `ef-themes-dark-themes',
+  ;; `ef-themes-light-themes'.
+
+  ;; 如果你不喜欢随机主题，也可以直接固定选择一个主题，如下：
+  ;; (ef-themes-select 'ef-summer)
+
+  ;; 随机挑选一款主题，如果是命令行打开Emacs，则随机挑选一款黑色主题
+  (if (display-graphic-p)
+      (ef-themes-load-random)
+    (ef-themes-load-random 'dark))
+
   :config
-  (load-theme 'tango))          ; for light theme, use modus-operandi
+  ;; auto change theme, aligning with system themes.
+  (defun my/apply-theme (appearance)
+    "Load theme, taking current system APPEARANCE into consideration."
+    (mapc #'disable-theme custom-enabled-themes)
+    (pcase appearance
+      ('light (if (display-graphic-p) (ef-themes-load-random 'light) (ef-themes-load-random 'dark)))
+      ('dark (ef-themes-load-random 'dark))))
+
+  (if (eq system-type 'darwin)
+      ;; only for emacs-plus
+      (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
+    (ef-themes-select 'ef-summer)
+    )
+  )
+
+;; (use-package emacs
+;;  :config
+;;  (load-theme 'modus-vivendi))          ; for light theme, use modus-operandi
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -263,6 +308,8 @@ If the new path's directories does not exist, create them."
 ;; Tools for academic researchers
 ;(load-file (expand-file-name "extras/researcher.el" user-emacs-directory))
 
+;; gopher
+(load-file (expand-file-name "extras/gopher.el" user-emacs-directory))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Built-in customization framework

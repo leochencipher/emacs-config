@@ -95,6 +95,8 @@
          (org-mode . flyspell-mode))    ; spell checking!
 
   :bind (:map global-map
+	      ("C-c o a" . org-agenda)
+	      ("C-c o c" . org-capture)
               ("C-c l s" . org-store-link)          ; Mnemonic: link → store
               ("C-c l i" . org-insert-link-global)) ; Mnemonic: link → insert
   :config
@@ -124,15 +126,26 @@
   (setq org-todo-keywords
         '((sequence "TODO(t)" "WAITING(w@/!)" "STARTED(s!)" "|" "DONE(d!)" "OBSOLETE(o@)")))
 
+  (setq-default org-enforce-todo-dependencies t)
+  (setq org-todo-keyword-faces
+    (quote (("TODO" :foreground "red" :weight bold)
+            ("DONE" :foreground "forest green" :weight bold)
+            ("WAITING" :foreground "orange" :weight bold)
+            ("STARTED" :foreground "magenta" :weight bold)
+            ("OBSOLETE" :foreground "forest green" :weight bold)
+            ("MEETING" :foreground "forest green" :weight bold)
+            ("PHONE" :foreground "forest green" :weight bold))))
+  ;; org style
+  (setq org-hide-emphasis-markers t)
   ;; Refile configuration
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-use-outline-path 'file)
 
   (setq org-capture-templates
-        '(("c" "Default Capture" entry (file "inbox.org")
+        '(("c" "Default Capture" entry (file "todo.org")
            "* TODO %?\n%U\n%i")
           ;; Capture and keep an org-link to the thing we're currently working with
-          ("r" "Capture with Reference" entry (file "inbox.org")
+          ("r" "Capture with Reference" entry (file "todo.org")
            "* TODO %?\n%U\n%i\n%a")
           ;; Define a section
           ("w" "Work")
