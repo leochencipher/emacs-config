@@ -44,7 +44,7 @@
 (setq org-directory "~/org/") ; Non-absolute paths for agenda and
                                         ; capture templates will look here.
 
-(setq org-agenda-files '("capture.org" "todo.org"))
+(setq org-agenda-files '("work.org" "todo.org"))
 
 ;; Default tags
 (setq org-tag-alist '(
@@ -98,8 +98,68 @@
 	      ("C-c o a" . org-agenda)
 	      ("C-c o c" . org-capture)
               ("C-c l s" . org-store-link)          ; Mnemonic: link → store
-              ("C-c l i" . org-insert-link-global)) ; Mnemonic: link → insert
+              ("C-c l i" . org-insert-link-global)) ; Mnemonic: link → inset
+  :custom-face
+  ;; 设置Org mode标题以及每级标题行的大小
+  (org-document-title ((t (:height 1.75 :weight bold))))
+  (org-level-1 ((t (:height 1.2 :weight bold))))
+  (org-level-2 ((t (:height 1.15 :weight bold))))
+  (org-level-3 ((t (:height 1.1 :weight bold))))
+  (org-level-4 ((t (:height 1.05 :weight bold))))
+  (org-level-5 ((t (:height 1.0 :weight bold))))
+  (org-level-6 ((t (:height 1.0 :weight bold))))
+  (org-level-7 ((t (:height 1.0 :weight bold))))
+  (org-level-8 ((t (:height 1.0 :weight bold))))
+  (org-level-9 ((t (:height 1.0 :weight bold))))
+  ;; 设置代码块用上下边线包裹
+  (org-block-begin-line ((t (:underline t :background unspecified))))
+  (org-block-end-line ((t (:overline t :underline nil :background unspecified))))
   :config
+    ;; ================================
+  ;; 在org mode里美化字符串
+  ;; ================================
+  (defun my/org-prettify-symbols ()
+	(setq prettify-symbols-alist
+		  (mapcan (lambda (x) (list x (cons (upcase (car x)) (cdr x))))
+				  '(
+					;; ("[ ]"              . 9744)         ; ☐
+					;; ("[X]"              . 9745)         ; ☑
+					;; ("[-]"              . 8863)         ; ⊟
+					("#+begin_src"      . 9998)         ; ✎
+					("#+end_src"        . 9633)         ; □
+					("#+begin_example"  . 129083)       ; 🠻
+					("#+end_example"    . 129081)       ; 🠹
+					("#+results:"       . 9776)         ; ☰
+					("#+attr_latex:"    . "🄛")
+					("#+attr_html:"     . "🄗")
+					("#+attr_org:"      . "🄞")
+					("#+name:"          . "🄝")         ; 127261
+					("#+caption:"       . "🄒")         ; 127250
+					("#+date:"          . "📅")         ; 128197
+					("#+author:"        . "💁")         ; 128100
+					("#+setupfile:"     . 128221)       ; 📝
+					("#+email:"         . 128231)       ; 📧
+					("#+startup:"       . 10034)        ; ✲
+					("#+options:"       . 9965)         ; ⛭
+					("#+title:"         . 10162)        ; ➲
+					("#+subtitle:"      . 11146)        ; ⮊
+					("#+downloaded:"    . 8650)         ; ⇊
+					("#+language:"      . 128441)       ; 🖹
+					("#+begin_quote"    . 187)          ; »
+					("#+end_quote"      . 171)          ; «
+                    ("#+begin_results"  . 8943)         ; ⋯
+                    ("#+end_results"    . 8943)         ; ⋯
+					)))
+    (setq prettify-symbols-unprettify-at-point t)
+	(prettify-symbols-mode 1))
+
+  ;; 提升latex预览的图片清晰度
+  (plist-put org-format-latex-options :scale 1.8)
+
+  ;; 设置标题行之间总是有空格；列表之间根据情况自动加空格
+  (setq org-blank-before-new-entry '((heading . t)
+									 (plain-list-item . auto)
+									 ))
   (require 'oc-csl)                     ; citation support
   (add-to-list 'org-export-backends 'md)
 
@@ -108,6 +168,7 @@
 
   ;; Make exporting quotes better
   (setq org-export-with-smart-quotes t)
+  
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -161,30 +222,92 @@
             ("w" "Work" agenda ""
              ((org-agenda-files '("work.org")))))))
 
+;;; try denote
+(use-package denote
+  :ensure t
+  :hook (dired-mode . denote-dired-mode-in-directories)
+  :bind (("C-c d n" . denote)
+         ("C-c d d" . denote-date)
+         ("C-c d t" . denote-type)
+         ("C-c d s" . denote-subdirectory)
+         ("C-c d f" . denote-open-or-create)
+         ("C-c d r" . denote-dired-rename-file))
+  :init
+  (with-eval-after-load 'org-capture
+    (setq denote-org-capture-specifiers "%l\n%i\n%?")
+    (add-to-list 'org-capture-templates
+                 '("N" "New note (with denote.el)" plain
+                   (file denote-last-path)
+                   #'denote-org-capture
+                   :no-save t
+                   :immediate-finish nil
+                   :kill-buffer t
+                   :jump-to-captured t)))
+  :config
+  (setq denote-directory (expand-file-name "~/org/"))
+  (setq denote-known-keywords '("emacs" "entertainment" "reading" "studying"))
+  (setq denote-infer-keywords t)
+  (setq denote-sort-keywords t)
+  ;; org is default, set others such as text, markdown-yaml, markdown-toml
+  (setq denote-file-type nil)
+  (setq denote-prompts '(title keywords))
+
+  ;; We allow multi-word keywords by default.  The author's personal
+  ;; preference is for single-word keywords for a more rigid workflow.
+  (setq denote-allow-multi-word-keywords t)
+  (setq denote-date-format nil)
+
+  ;; If you use Markdown or plain text files (Org renders links as buttons
+  ;; right away)
+  (add-hook 'find-file-hook #'denote-link-buttonize-buffer)
+  (setq denote-dired-rename-expert nil)
+
+  ;; OR if only want it in `denote-dired-directories':
+  (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
+  )
+
+;; search notes
+(use-package consult-notes
+  :ensure t
+  :commands (consult-notes
+             consult-notes-search-in-all-notes)
+  :bind (("C-c n f" . consult-notes)
+         ("C-c n c" . consult-notes-search-in-all-notes))
+  :config
+  (setq consult-notes-file-dir-sources
+        `(
+          ("work"    ?w ,(concat org-directory "/work/"))
+          ("notes"   ?n ,(concat org-directory "/notes/"))
+          ("org"     ?o ,(concat org-directory "/"))
+          ("books"   ?b ,(concat org-directory "/books/"))
+          )
+	)
+)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Phase 3: extensions (org-roam, etc.)
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package org-roam
-  :ensure t
-  :config
-  (org-roam-db-autosync-mode)
-  ;; Dedicated side window for backlinks
-  (add-to-list 'display-buffer-alist
-               '("\\*org-roam\\*"
-                 (display-buffer-in-side-window)
-                 (side . right)
-                 (window-width . 0.4)
-                 (window-height . fit-window-to-buffer))))
+;; (use-package org-roam
+;;   :ensure t
+;;   :config
+;;   (org-roam-db-autosync-mode)
+;;   ;; Dedicated side window for backlinks
+;;   (add-to-list 'display-buffer-alist
+;;                '("\\*org-roam\\*"
+;;                  (display-buffer-in-side-window)
+;;                  (side . right)
+;;                  (window-width . 0.4)
+;;                  (window-height . fit-window-to-buffer))))
 
-;; Pretty web interface for org-roam
-(use-package org-roam-ui
-  :ensure t
-  :after org-roam
-  :config
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start t))
+;; ;; Pretty web interface for org-roam
+;; (use-package org-roam-ui
+;;   :ensure t
+;;   :after org-roam
+;;   :config
+;;   (setq org-roam-ui-sync-theme t
+;;         org-roam-ui-follow t
+;;         org-roam-ui-update-on-save t
+;;         org-roam-ui-open-on-start t))

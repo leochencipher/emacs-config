@@ -63,14 +63,14 @@
 ;; font setup
 (defun load-font-setup()
   (cond ((eq window-system 'pgtk)
-         (set-face-attribute 'default nil :height 140 :family "WenQuanYi Micro Hei Mono"))
+         (set-face-attribute 'default nil :height 140 :family "Sarasa Term SC Nerd"))
         (t
-         (let ((emacs-font-size 16)
-               (chinese-font-name  "TsangerJinKai03-6763")
+         (let ((emacs-font-size 20)
+               (chinese-font-name  "Sarasa Term SC Nerd")
                english-font-name)
            (cond
             ((featurep 'cocoa)
-             (setq english-font-name "Monaco"))
+             (setq english-font-name "Sarasa Term SC Nerd"))
             ((string-equal system-type "gnu/linux")
              (setq english-font-name "WenQuanYi Micro Hei Mono")))
            (when (display-grayscale-p)
@@ -310,6 +310,9 @@ If the new path's directories does not exist, create them."
 
 ;; gopher
 (load-file (expand-file-name "extras/gopher.el" user-emacs-directory))
+
+;; reading
+(load-file (expand-file-name "extras/reading.el" user-emacs-directory))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Built-in customization framework
@@ -321,7 +324,8 @@ If the new path's directories does not exist, create them."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(which-key)))
+ '(package-selected-packages '(which-key))
+ '(visual-fill-column-center-text t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
