@@ -313,6 +313,10 @@ If the new path's directories does not exist, create them."
 
 ;; reading
 (load-file (expand-file-name "extras/reading.el" user-emacs-directory))
+
+;; input methods rime
+(load-file (expand-file-name "extras/input.el" user-emacs-directory))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Built-in customization framework
