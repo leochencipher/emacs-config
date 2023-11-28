@@ -16,8 +16,8 @@
 )
 
 (defun my-nov-view-setup ()
-    (face-remap-add-relative 'variable-pitch :family "Sarasa Term SC Nerd"
-                                           :height 1.2))
+    (face-remap-add-relative 'variable-pitch :family "Amazon Ember"
+                                           :height 1.1))
 
 (use-package nov
   :ensure t

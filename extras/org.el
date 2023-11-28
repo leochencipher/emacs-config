@@ -72,8 +72,8 @@
 ;;; Phase 3 variables
 
 ;; Org-roam variables
-(setq org-roam-directory "~/org/roam/")
-(setq org-roam-index-file "~/org/roam/index.org")
+;; (setq org-roam-directory "~/org/roam/")
+;; (setq org-roam-index-file "~/org/roam/index.org")
 
 
 ;;; Optional variables
@@ -245,7 +245,7 @@
                    :jump-to-captured t)))
   :config
   (setq denote-directory (expand-file-name "~/org/"))
-  (setq denote-known-keywords '("emacs" "entertainment" "reading" "studying"))
+  (setq denote-known-keywords '("emacs" "entertainment" "reading" "studying" "working" "digest"))
   (setq denote-infer-keywords t)
   (setq denote-sort-keywords t)
   ;; org is default, set others such as text, markdown-yaml, markdown-toml

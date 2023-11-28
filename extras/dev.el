@@ -73,6 +73,7 @@
           (json-mode . json-ts-mode)
           (css-mode . css-ts-mode)
 	  (rust-mode       . rust-ts-mode)
+	  (go-mode       . go-ts-mode)
           (python-mode . python-ts-mode)))
   :hook
   ;; Auto parenthesis matching
@@ -102,12 +103,21 @@
 (use-package yaml-mode
   :ensure t)
 
+(use-package go-mode
+  :ensure t)
+
+
 (use-package json-mode
   :ensure t)
 
 (use-package python-mode
   :ensure t)
 
+(use-package python-black
+  :ensure t
+  :demand t
+  :after python
+  :hook (python-mode . python-black-on-save-mode-enable-dwim))
 
 ;; Emacs ships with a lot of popular programming language modes. If it's not
 ;; built in, you're almost certain to find a mode for the language you're
