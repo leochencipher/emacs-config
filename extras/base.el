@@ -133,7 +133,25 @@
   :config
   (setq completion-styles '(orderless)))
 
+;; Mode line doom
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
+
+
+;; blink search
+(use-package blink-search 
+  :straight '(blink-search :type git :host github :repo "manateelazycat/blink-search"
+            :files (:defaults "*.el" "*.py" "backend" "core" "icons" "images")
+            :build (:not compile))
+  :config
+  (setq blink-search-common-directory '(("WORKREPO" "~/advance/Project/")
+                                      ("HOME" "~/")
+                                      ("PROJECT" "~/Project/")
+                                      ("SIDE" "~/sideproject/")
+                                      ("CONFIG" "~/.emacs.d/")
+                                      ("Book" "~/books/")
+                                      ))
+)
+
 
