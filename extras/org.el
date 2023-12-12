@@ -48,23 +48,21 @@
 
 ;; Default tags
 (setq org-tag-alist '(
-                      ;; locale
+                      ;; area
                       (:startgroup)
-                      ("home" . ?h)
-                      ("work" . ?w)
-                      ("school" . ?s)
+                      ("family" . ?f)
+                      ("career" . ?c)
+                      ("wellbeing" . ?w)
+                      ("networking" . ?n)
                       (:endgroup)
                       (:newline)
-                      ;; scale
+                      ;; scale 
                       (:startgroup)
                       ("one-shot" . ?o)
                       ("project" . ?j)
                       ("tiny" . ?t)
                       (:endgroup)
-                      ;; misc
-                      ("meta")
-                      ("review")
-                      ("reading")))
+                      ))
 
 ;; Org-refile: where should org-refile look?
 (setq org-refile-targets 'FIXME)
