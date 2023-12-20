@@ -305,6 +305,7 @@ If the new path's directories does not exist, create them."
 ;; details.
 ;(load-file (expand-file-name "extras/email.el" user-emacs-directory))
 
+
 ;; Tools for academic researchers
 ;(load-file (expand-file-name "extras/researcher.el" user-emacs-directory))
 
@@ -336,3 +337,6 @@ If the new path's directories does not exist, create them."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
