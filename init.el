@@ -318,6 +318,10 @@ If the new path's directories does not exist, create them."
 ;; input methods rime
 (load-file (expand-file-name "extras/input.el" user-emacs-directory))
 
+;; Tools for llm
+ (load-file (expand-file-name "extras/llm.el" user-emacs-directory))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Built-in customization framework
@@ -329,6 +333,9 @@ If the new path's directories does not exist, create them."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("a73cd17e5b490a5558a0ca13186cccb85ff74b2160f77e65ff36024bc66089b4"
+     default))
  '(package-selected-packages '(which-key))
  '(visual-fill-column-center-text t))
 (custom-set-faces

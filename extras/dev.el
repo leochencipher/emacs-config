@@ -73,6 +73,7 @@
           (json-mode . json-ts-mode)
           (css-mode . css-ts-mode)
 	  (rust-mode       . rust-ts-mode)
+	  (lua-mode . lua-ts-mode)
 	  (go-mode       . go-ts-mode)
           (python-mode . python-ts-mode)))
   :hook

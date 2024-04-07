@@ -12,11 +12,11 @@
   :ensure t
   :config
   (setq-default visual-fill-column-center-text t)
-  (setq-default visual-fill-column-width 120)
+  (setq-default visual-fill-column-width 80)
 )
 
 (defun my-nov-view-setup ()
-    (face-remap-add-relative 'variable-pitch :family "Amazon Ember"
+    (face-remap-add-relative 'variable-pitch :family "Bookerly"
                                            :height 1.1))
 
 (use-package nov
@@ -40,5 +40,5 @@
   (require 'shrface)
   (setq nov-shr-rendering-functions '((img . nov-render-img) (title . nov-render-title)))
   (setq nov-shr-rendering-functions (append nov-shr-rendering-functions shr-external-rendering-functions))
-  (setq nov-text-width 110)
+  (setq nov-text-width 160)
   )
