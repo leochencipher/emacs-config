@@ -147,36 +147,11 @@
   :config
   (setq blink-search-common-directory '(("WORKREPO" "~/advance/Project/")
                                       ("HOME" "~/")
-                                      ("PROJECT" "~/Project/")
+                                      ("PROJECT" "~/project/")
                                       ("SIDE" "~/sideproject/")
-                                      ("CONFIG" "~/.emacs.d/")
-                                      ("Book" "~/books/")
+                                      ("CONFIG" "~/.config/emacs")
+                                      ("Book" "~/book/")
                                       ))
 )
 
-;; emms setup
-
-(use-package emms
-    :init
-    (require 'emms-setup)
-    (emms-all)
-    (emms-default-players)
-    :custom
-    (emms-source-file-default-directory "~/Music/songs")
-    :bind
-    (("<f5>"   . emms-browser)
-     ("M-<f5>" . emms)
-     ("<XF86AudioPrev>" . emms-previous)
-     ("<XF86AudioNext>" . emms-next)
-     ("<XF86AudioPlay>" . emms-pause)))
-
-;; cloud music
-(use-package netease-cloud-music 
-  :straight '(netease-cloud-music :type git :host github :repo "SpringHan/netease-cloud-music.el"
-            :files (:defaults "*.el")
-            :build (:not compile))
-  :init
-  (require 'netease-cloud-music)
-  (require 'netease-cloud-music-ui)
-)
 

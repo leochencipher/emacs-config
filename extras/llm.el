@@ -11,6 +11,6 @@
 		    (make-llm-ollama
 		     ;; this model should be pulled to use it
 		     ;; value should be the same as you print in terminal during pull
-		     :chat-model "qwen:latest"
-		     :embedding-model "qwen:latest"))
+		     :chat-model "gemma3:latest"
+		     :embedding-model "gemma3:latest"))
 )

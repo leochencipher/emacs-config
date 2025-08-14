@@ -255,11 +255,6 @@
   (setq denote-allow-multi-word-keywords t)
   (setq denote-date-format nil)
 
-  ;; If you use Markdown or plain text files (Org renders links as buttons
-  ;; right away)
-  (add-hook 'find-file-hook #'denote-link-buttonize-buffer)
-  (setq denote-dired-rename-expert nil)
-
   ;; OR if only want it in `denote-dired-directories':
   (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
   )
@@ -281,31 +276,3 @@
           )
 	)
 )
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;
-;;;   Phase 3: extensions (org-roam, etc.)
-;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; (use-package org-roam
-;;   :ensure t
-;;   :config
-;;   (org-roam-db-autosync-mode)
-;;   ;; Dedicated side window for backlinks
-;;   (add-to-list 'display-buffer-alist
-;;                '("\\*org-roam\\*"
-;;                  (display-buffer-in-side-window)
-;;                  (side . right)
-;;                  (window-width . 0.4)
-;;                  (window-height . fit-window-to-buffer))))
-
-;; ;; Pretty web interface for org-roam
-;; (use-package org-roam-ui
-;;   :ensure t
-;;   :after org-roam
-;;   :config
-;;   (setq org-roam-ui-sync-theme t
-;;         org-roam-ui-follow t
-;;         org-roam-ui-update-on-save t
-;;         org-roam-ui-open-on-start t))

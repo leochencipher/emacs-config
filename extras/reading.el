@@ -31,9 +31,9 @@
   :bind (:map nov-mode-map
               ("j" . scroll-up-line)
               ("k" . scroll-down-line)
-	      ("t" . nov-goto-toc)
-	      ("n" . nov-next-document)
-	      ("p" . nov-previous-document)
+	      ("C-n t" . nov-goto-toc)
+	      ("C-n n" . nov-next-document)
+	      ("C-n p" . nov-previous-document)
 	      ("<tab>" . shrface-outline-cycle)
 	)
   :config

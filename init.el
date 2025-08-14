@@ -37,6 +37,8 @@
 
 (straight-use-package 'use-package)
 
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Basic settings
@@ -345,5 +347,3 @@ If the new path's directories does not exist, create them."
  ;; If there is more than one, they won't work right.
  )
 
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
