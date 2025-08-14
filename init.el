@@ -233,7 +233,7 @@ If the new path's directories does not exist, create them."
   :bind ("C-c t" . ef-themes-toggle)
   :init
   ;; set two specific themes and switch between them
-  (setq ef-themes-to-toggle '(ef-summer ef-winter))
+  (setq ef-themes-to-toggle '(ef-spring ef-winter))
   ;; set org headings and function syntax
   (setq ef-themes-headings
         '((0 . (bold 1))
@@ -270,7 +270,7 @@ If the new path's directories does not exist, create them."
   (if (eq system-type 'darwin)
       ;; only for emacs-plus
       (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
-    (ef-themes-select 'ef-summer)
+    (ef-themes-select 'ef-spring)
     )
   )
 
@@ -308,20 +308,18 @@ If the new path's directories does not exist, create them."
 ;(load-file (expand-file-name "extras/email.el" user-emacs-directory))
 
 
-;; Tools for academic researchers
-;(load-file (expand-file-name "extras/researcher.el" user-emacs-directory))
-
 ;; gopher
 (load-file (expand-file-name "extras/gopher.el" user-emacs-directory))
 
 ;; reading
 (load-file (expand-file-name "extras/reading.el" user-emacs-directory))
 
-;; input methods rime
-(load-file (expand-file-name "extras/input.el" user-emacs-directory))
-
 ;; Tools for llm
  (load-file (expand-file-name "extras/llm.el" user-emacs-directory))
+
+;; elfeed for rss
+(load-file (expand-file-name "extras/rss.el" user-emacs-directory))
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

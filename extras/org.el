@@ -166,7 +166,7 @@
 
   ;; Make exporting quotes better
   (setq org-export-with-smart-quotes t)
-  
+  (setq org-src-fontify-natively t)
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -29,4 +29,8 @@
   (evil-mode)
 
   ;; Configuring initial major mode for some modes
-  (evil-set-initial-state 'vterm-mode 'emacs))
+  (evil-set-initial-state 'vterm-mode 'emacs)
+  (evil-set-initial-state 'elfeed-search-mode 'emacs)
+  (evil-set-initial-state 'nov-mode 'emacs)
+  (evil-set-initial-state 'elfeed-show-mode 'emacs)
+)
