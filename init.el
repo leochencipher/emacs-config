@@ -62,6 +62,7 @@
 
 ;; If you want to turn off the welcome screen, uncomment this
 (setq inhibit-splash-screen t)
+
 ;; font setup
 (defun load-font-setup()
   (cond ((eq window-system 'pgtk)
@@ -74,7 +75,7 @@
             ((featurep 'cocoa)
              (setq english-font-name "Sarasa Term SC Nerd"))
             ((string-equal system-type "gnu/linux")
-             (setq english-font-name "WenQuanYi Micro Hei Mono")))
+             (setq english-font-name "Sarasa Term SC Nerd")))
            (when (display-grayscale-p)
              (set-frame-font (format "%s-%s" (eval english-font-name) (eval emacs-font-size)))
              (set-fontset-font (frame-parameter nil 'font) 'unicode (eval english-font-name))

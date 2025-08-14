@@ -152,6 +152,7 @@
                                       ("CONFIG" "~/.config/emacs")
                                       ("Book" "~/book/")
                                       ))
+  :bind ("C-c b" . blink-search)
 )
 
 
