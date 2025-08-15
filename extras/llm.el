@@ -1,16 +1,10 @@
-(use-package ellama
+(use-package gptel
   :ensure t
-  :init
-  ;; setup key bindings
-  (setopt ellama-keymap-prefix "C-c e")
-  ;; language you want ellama to translate to
-  (setopt ellama-language "English")
-  ;; could be llm-openai for example
-  (require 'llm-ollama)
-  (setopt ellama-provider
-		    (make-llm-ollama
-		     ;; this model should be pulled to use it
-		     ;; value should be the same as you print in terminal during pull
-		     :chat-model "gemma3:latest"
-		     :embedding-model "gemma3:latest"))
-)
+  :bind ("C-c e" . gptel)
+  :config
+  (setq
+   gptel-model 'gemma3:latest
+   gptel-backend (gptel-make-ollama "Ollama"
+                 :host "localhost:11434"
+                 :stream t
+                 :models '(gemma3:latest))))
