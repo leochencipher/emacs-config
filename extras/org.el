@@ -99,9 +99,9 @@
               ("C-c l i" . org-insert-link-global)) ; Mnemonic: link → inset
   :custom-face
   ;; 设置Org mode标题以及每级标题行的大小
-  (org-document-title ((t (:height 1.75 :weight bold))))
-  (org-level-1 ((t (:height 1.2 :weight bold))))
-  (org-level-2 ((t (:height 1.15 :weight bold))))
+  (org-document-title ((t (:height 2.5 :weight bold))))
+  (org-level-1 ((t (:height 2.0 :weight bold))))
+  (org-level-2 ((t (:height 1.5 :weight bold))))
   (org-level-3 ((t (:height 1.1 :weight bold))))
   (org-level-4 ((t (:height 1.05 :weight bold))))
   (org-level-5 ((t (:height 1.0 :weight bold))))

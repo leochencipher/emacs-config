@@ -40,5 +40,5 @@
   (require 'shrface)
   (setq nov-shr-rendering-functions '((img . nov-render-img) (title . nov-render-title)))
   (setq nov-shr-rendering-functions (append nov-shr-rendering-functions shr-external-rendering-functions))
-  (setq nov-text-width 160)
+  (setq nov-text-width 100)
   )

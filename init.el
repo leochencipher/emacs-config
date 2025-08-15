@@ -321,6 +321,9 @@ If the new path's directories does not exist, create them."
 ;; elfeed for rss
 (load-file (expand-file-name "extras/rss.el" user-emacs-directory))
 
+;; rime input methods
+(load-file (expand-file-name "extras/rime.el" user-emacs-directory))
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

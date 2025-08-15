@@ -11,3 +11,9 @@
 /tree-sitter/
 org-roam.db
 /bookmarks
+/blink-search.db
+/blink-search/
+/elfeed/
+/nov-places
+/recentf
+/url/
