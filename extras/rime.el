@@ -6,9 +6,9 @@
 (use-package rime
   :ensure t
   :custom
-  (rime-librime-root "/opt/homebrew")
+  ;; (rime-librime-root "/opt/homebrew")
   ;; (rime-librime-root "~/.emacs.d/librime/dist") 
-  (rime-user-data-dir "/Users/schen/.config/rime")
+  (rime-user-data-dir "~/.config/rime")
 
   (rime-posframe-properties
       (list :background-color "#333333"

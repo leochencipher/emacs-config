@@ -69,13 +69,13 @@
          (set-face-attribute 'default nil :height 140 :family "Sarasa Term SC Nerd"))
         (t
          (let ((emacs-font-size 20)
-               (chinese-font-name  "Sarasa Term SC Nerd")
+               (chinese-font-name  "Bookerly")
                english-font-name)
            (cond
             ((featurep 'cocoa)
-             (setq english-font-name "Sarasa Term SC Nerd"))
+             (setq english-font-name "BlexMono Nerd Font"))
             ((string-equal system-type "gnu/linux")
-             (setq english-font-name "Sarasa Term SC Nerd")))
+             (setq english-font-name "BlexMono Nerd Font")))
            (when (display-grayscale-p)
              (set-frame-font (format "%s-%s" (eval english-font-name) (eval emacs-font-size)))
              (set-fontset-font (frame-parameter nil 'font) 'unicode (eval english-font-name))

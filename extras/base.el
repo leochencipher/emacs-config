@@ -146,7 +146,6 @@
             :build (:not compile))
   :config
   (setq blink-search-common-directory '(("WORKREPO" "~/advance/Project/")
-                                      ("HOME" "~/")
                                       ("PROJECT" "~/Project/")
                                       ("SIDE" "~/sideproject/")
                                       ("CONFIG" "~/.config/emacs")
