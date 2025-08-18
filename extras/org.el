@@ -285,6 +285,7 @@ installed."
           ("notes"   ?n ,(concat org-directory "/notes/"))
           ("org"     ?o ,(concat org-directory "/"))
           ("books"   ?b ,(concat org-directory "/books/"))
+          ("journals"   ?b ,(concat org-directory "/journal/"))
           )
 	)
 )
@@ -308,3 +309,10 @@ installed."
   (setq denote-journal-keyword "journal")
   ;; Read the doc string of `denote-journal-title-format'.
   (setq denote-journal-title-format 'day-date-month-year))
+
+
+;; modern org
+(use-package org-modern
+  :ensure t
+  :config
+  (with-eval-after-load 'org (global-org-modern-mode)))
