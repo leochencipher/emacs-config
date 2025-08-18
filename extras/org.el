@@ -169,6 +169,18 @@
   (setq org-src-fontify-natively t)
   )
 
+
+(defun sc/markdown-to-org-region (start end)
+  "Convert Markdown formatted text in region (START, END) to Org.
+
+This command requires that pandoc (man page `pandoc(1)') be
+installed."
+  (interactive "r")
+  (shell-command-on-region
+   start end
+   "pandoc -f markdown -t org --wrap=preserve" t t))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Phase 2: todos, agenda generation, and task tracking
@@ -276,3 +288,23 @@
           )
 	)
 )
+
+;; note journal
+(use-package denote-journal
+  :ensure t
+  ;; Bind those to some key for your convenience.
+  :commands ( denote-journal-new-entry
+              denote-journal-new-or-existing-entry
+              denote-journal-link-or-create-entry )
+  :hook (calendar-mode . denote-journal-calendar-mode)
+  :bind ("C-c d j" . denote-journal-new-or-existing-entry)
+  :config
+  ;; Use the "journal" subdirectory of the `denote-directory'.  Set this
+  ;; to nil to use the `denote-directory' instead.
+  (setq denote-journal-directory
+        (expand-file-name "journal" denote-directory))
+  ;; Default keyword for new journal entries. It can also be a list of
+  ;; strings.
+  (setq denote-journal-keyword "journal")
+  ;; Read the doc string of `denote-journal-title-format'.
+  (setq denote-journal-title-format 'day-date-month-year))

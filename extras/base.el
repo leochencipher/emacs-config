@@ -151,6 +151,7 @@
                                       ("CONFIG" "~/.config/emacs")
                                       ("Book" "~/book/")
                                       ))
+  (setq blink-search-browser-function #'browse-url-default-macosx-browser)
   :bind ("C-c b" . blink-search)
 )
 
