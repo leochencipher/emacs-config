@@ -234,7 +234,7 @@ If the new path's directories does not exist, create them."
   :bind ("C-c t" . ef-themes-toggle)
   :init
   ;; set two specific themes and switch between them
-  (setq ef-themes-to-toggle '(ef-elea-dark ef-elea-light))
+  (setq ef-themes-to-toggle '(ef-melissa-light ef-melissa-dark))
   ;; set org headings and function syntax
   (setq ef-themes-headings
         '((0 . (bold 1))
@@ -271,7 +271,7 @@ If the new path's directories does not exist, create them."
   (if (eq system-type 'darwin)
       ;; only for emacs-plus
       (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
-    (ef-themes-select 'ef-elea-dark)
+    (ef-themes-select 'ef-melissa-dark)
     )
   )
 
