@@ -271,7 +271,7 @@ If the new path's directories does not exist, create them."
   (if (eq system-type 'darwin)
       ;; only for emacs-plus
       (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
-    (ef-themes-select 'ef-spring)
+    (ef-themes-select 'ef-melissa-dark)
     )
   )
 
