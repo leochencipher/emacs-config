@@ -6,6 +6,7 @@
    (expand-file-name "elfeed" user-emacs-directory))
   (elfeed-show-entry-switch 'display-buffer)
   (elfeed-search-filter "@1-week-ago +unread")
+  (browse-url-browser-function 'eww-browse-url)
   :config 
   (defun yt-dl-v-it ()
     "Downloads the URL in an async shell"
