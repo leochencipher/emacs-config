@@ -15,13 +15,13 @@
   (gptel-make-ollama "rOllama"
                  :host "192.168.1.28:11434"
                  :stream t
-                 :models (get-ollama-models))
+                 :models '(gemma3:latest))
   (setq
    gptel-model 'gemma3:latest
    gptel-backend (gptel-make-ollama "Ollama"
                  :host "localhost:11434"
                  :stream t
-                 :models '(gemma3:latest))))
+                 :models (get-ollama-models))))
 
 
 (use-package minuet

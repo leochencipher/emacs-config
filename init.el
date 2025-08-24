@@ -327,6 +327,9 @@ If the new path's directories does not exist, create them."
 ;; tts
 (load-file (expand-file-name "extras/tts.el" user-emacs-directory))
 
+;; emms
+(load-file (expand-file-name "extras/emms.el" user-emacs-directory))
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
