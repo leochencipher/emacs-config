@@ -266,6 +266,11 @@ installed."
   ;; preference is for single-word keywords for a more rigid workflow.
   (setq denote-allow-multi-word-keywords t)
   (setq denote-date-format nil)
+  ;; template
+  (setq denote-templates
+      `((report . "* Some heading\n\n* Another heading")
+        (journal . "* Daily\n\n** Work\n\n** Side") 
+        ))
 
   ;; OR if only want it in `denote-dired-directories':
   (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)

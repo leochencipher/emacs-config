@@ -1,3 +1,4 @@
+;; gptel 
 (use-package gptel
   :ensure t
   :bind ("C-c e" . gptel)
@@ -23,7 +24,18 @@
                  :stream t
                  :models '(gemma3:latest))))
 
+;; gptel prompt
+(use-package gptel-prompts
+  :after (gptel)
+  :demand t
+  :config
+  (setq gptel-prompts-directory "~/.config/emacs/prompts/")
+  (gptel-prompts-update)
+  ;; Ensure prompts are updated if prompt files change
+  (gptel-prompts-add-update-watchers))
 
+
+;; minuet for code completion
 (use-package minuet
   :ensure t
   :bind

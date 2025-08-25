@@ -327,6 +327,9 @@ If the new path's directories does not exist, create them."
 ;; tts
 (load-file (expand-file-name "extras/tts.el" user-emacs-directory))
 
+;;duckdb
+
+(load-file (expand-file-name "extras/sql-duckdb.el" user-emacs-directory))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
