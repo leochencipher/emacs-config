@@ -1,4 +1,4 @@
-;; epub reader
+;; epub reader  -*- lexical-binding: t; -*-
 (use-package shrface
   :ensure t
   :defer t
