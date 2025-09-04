@@ -134,5 +134,10 @@
             :files (:defaults "*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
             :build (:not compile))
   :init
-  (global-lsp-bridge-mode))
+  (global-lsp-bridge-mode)
+  :config
+  (setq lsp-bridge-enable-auto-format-code t)
+
+  )
+
 
