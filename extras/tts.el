@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package speak-buffer
   :ensure t
   :vc (:url "https://github.com/lorniu/speak-buffer.el")

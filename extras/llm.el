@@ -1,4 +1,4 @@
-;; gptel 
+;; gptel  -*- lexical-binding: t; -*- 
 (use-package gptel
   :ensure t
   :bind ("C-c e" . gptel)

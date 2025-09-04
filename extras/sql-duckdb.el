@@ -1,4 +1,4 @@
-;; DuckDB interpreter support for sql-interactive-mode
+;; DuckDB interpreter support for sql-interactive-mode  -*- lexical-binding: t; -*-
 
 ;; This is copied from sqlite interpreter support in sql.el.
 

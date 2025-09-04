@@ -1,4 +1,4 @@
-;; posframe for in position display
+;; posframe for in position display  -*- lexical-binding: t; -*-
 (use-package posframe
 :ensure t
 )

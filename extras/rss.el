@@ -1,4 +1,4 @@
-;; Configure Elfeed
+;; Configure Elfeed  -*- lexical-binding: t; -*-
 (use-package elfeed
   :ensure t
   :custom
