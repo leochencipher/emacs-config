@@ -64,27 +64,10 @@
 (setq inhibit-splash-screen t)
 
 ;; font setup
-(defun load-font-setup()
-  (cond ((eq window-system 'pgtk)
-         (set-face-attribute 'default nil :height 140 :family "Sarasa Term SC Nerd"))
-        (t
-         (let ((emacs-font-size 20)
-               (chinese-font-name  "Bookerly")
-               english-font-name)
-           (cond
-            ((featurep 'cocoa)
-             (setq english-font-name "BlexMono Nerd Font"))
-            ((string-equal system-type "gnu/linux")
-             (setq english-font-name "BlexMono Nerd Font")))
-           (when (display-grayscale-p)
-             (set-frame-font (format "%s-%s" (eval english-font-name) (eval emacs-font-size)))
-             (set-fontset-font (frame-parameter nil 'font) 'unicode (eval english-font-name))
-
-             (dolist (charset '(kana han symbol cjk-misc bopomofo))
-               (set-fontset-font (frame-parameter nil 'font) charset (font-spec :family (eval chinese-font-name))))
-             )))))
-
-(load-font-setup)
+(set-face-attribute 'default nil
+                    :family "Sarasa Term SC Nerd"
+                    :height 180
+                    )
 
 
 (setq initial-major-mode 'fundamental-mode)  ; default mode for the *scratch* buffer
@@ -113,7 +96,7 @@
 (defun bedrock--backup-file-name (fpath)
   "Return a new file path of a given file path.
 If the new path's directories does not exist, create them."
-  (let* ((backupRootDir "~/.emacs.d/emacs-backup/")
+  (let* ((backupRootDir "~/.config/emacs/emacs-backup/")
          (filePath (replace-regexp-in-string "[A-Za-z]:" "" fpath )) ; remove Windows driver letter in path
          (backupFilePath (replace-regexp-in-string "//" "/" (concat backupRootDir filePath "~") )))
     (make-directory (file-name-directory backupFilePath) (file-name-directory backupFilePath))

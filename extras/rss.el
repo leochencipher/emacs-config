@@ -12,13 +12,15 @@
     "Downloads the URL in an async shell"
     (interactive) 
     (let ((default-directory "~/newpipe"))
-      (async-shell-command (format "edv '%s'" (elfeed-entry-link elfeed-show-entry)))))
+      (start-process "DownloadVideo" nil "edv" (format "%s" (elfeed-entry-link elfeed-show-entry)))
+      ))
 
   (defun yt-dl-a-it ()
     "Downloads the URL in an async shell"
     (interactive) 
     (let ((default-directory "~/newpipe"))
-      (async-shell-command (format "eda '%s'" (elfeed-entry-link elfeed-show-entry)))))
+      (start-process "DownloadAudio" nil "eda" (format "%s" (elfeed-entry-link elfeed-show-entry)))
+      ))
 
   :bind
   (("C-c u e" . elfeed)

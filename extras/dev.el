@@ -135,9 +135,8 @@
             :build (:not compile))
   :init
   (global-lsp-bridge-mode)
-  :config
-  (setq lsp-bridge-enable-auto-format-code t)
-
+  ;; :config
+  ;; (setq lsp-bridge-enable-auto-format-code t)
   )
 
 
