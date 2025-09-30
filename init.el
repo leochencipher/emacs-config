@@ -66,7 +66,7 @@
 ;; font setup
 (set-face-attribute 'default nil
                     :family "Sarasa Term SC Nerd"
-                    :height 180
+                    :height 200
                     )
 
 
@@ -217,7 +217,7 @@ If the new path's directories does not exist, create them."
   :bind ("C-c t" . ef-themes-toggle)
   :init
   ;; set two specific themes and switch between them
-  (setq ef-themes-to-toggle '(ef-melissa-light ef-melissa-dark))
+  (setq ef-themes-to-toggle '(ef-melissa-light ef-owl))
   ;; set org headings and function syntax
   (setq ef-themes-headings
         '((0 . (bold 1))
