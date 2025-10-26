@@ -107,6 +107,8 @@
 (use-package go-mode
   :ensure t)
 
+(use-package rust-mode
+  :ensure t)
 
 (use-package json-mode
   :ensure t)
@@ -140,3 +142,19 @@
   )
 
 
+;; vterm
+(use-package vterm
+    :ensure t
+    :commands vterm
+    :custom
+    (vterm-always-compile-module t)
+    
+    :hook
+    (vterm-mode . (lambda ()
+		    ;; Settings to mimic dracula I use for zsh.
+		    (buffer-face-mode 1)
+		    (custom-set-faces
+		     '(vterm-face ((t (:family "Sarasa Term SC Nerd" :height 90 :weight normal))))
+		    )))
+    :bind
+    ("<f7>" . vterm))
