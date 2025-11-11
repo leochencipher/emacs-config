@@ -262,6 +262,9 @@ If the new path's directories does not exist, create them."
 ;;  :config
 ;;  (load-theme 'modus-vivendi))          ; for light theme, use modus-operandi
 
+
+(global-visual-line-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
 ;;;   Optional extras
