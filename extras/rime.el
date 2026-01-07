@@ -6,7 +6,7 @@
 (use-package rime
   :ensure t
   :custom
-  ;; (rime-librime-root "/opt/homebrew")
+  (rime-librime-root "/opt/homebrew")
   ;; (rime-librime-root "~/.emacs.d/librime/dist") 
   (rime-user-data-dir "~/.config/rime")
 

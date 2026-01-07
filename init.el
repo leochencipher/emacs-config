@@ -65,8 +65,9 @@
 
 ;; font setup
 (set-face-attribute 'default nil
-                    :family "Sarasa Term SC Nerd"
-                    :height 200
+                    ;; :family "IosevkaTermSS05 Nerd Font Mono + LXGW WenKai Mono Lite"
+                    :family "LXGW Bright Code"
+                    :height 160
                     )
 
 
@@ -217,7 +218,7 @@ If the new path's directories does not exist, create them."
   :bind ("C-c t" . ef-themes-toggle)
   :init
   ;; set two specific themes and switch between them
-  (setq ef-themes-to-toggle '(ef-melissa-light ef-owl))
+  (setq modus-themes-to-toggle '(ef-melissa-light ef-owl))
   ;; set org headings and function syntax
   (setq ef-themes-headings
         '((0 . (bold 1))
@@ -263,7 +264,6 @@ If the new path's directories does not exist, create them."
 ;;  (load-theme 'modus-vivendi))          ; for light theme, use modus-operandi
 
 
-(global-visual-line-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -278,16 +278,17 @@ If the new path's directories does not exist, create them."
 ;; These ones are *strongly* recommended!
 (load-file (expand-file-name "extras/base.el" user-emacs-directory))
 
+;; Org-mode configuration
+;; WARNING: need to customize things inside the elisp file before use! See
+;; the file extras/org-intro.txt for help.
+(load-file (expand-file-name "extras/org.el" user-emacs-directory))
+
+
 ;; Packages for software development
 (load-file (expand-file-name "extras/dev.el" user-emacs-directory))
 
 ;; Vim-bindings in Emacs (evil-mode configuration)
 (load-file (expand-file-name "extras/vim-like.el" user-emacs-directory))
-
-;; Org-mode configuration
-;; WARNING: need to customize things inside the elisp file before use! See
-;; the file extras/org-intro.txt for help.
-(load-file (expand-file-name "extras/org.el" user-emacs-directory))
 
 ;; Email configuration in Emacs
 ;; WARNING: needs the `mu' program installed; see the elisp file for more

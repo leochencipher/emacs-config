@@ -22,6 +22,7 @@
       (start-process "DownloadAudio" nil "eda" (format "%s" (elfeed-entry-link elfeed-show-entry)))
       ))
 
+  (add-hook 'elfeed-show-mode-hook 'visual-line-mode)
   :bind
   (("C-c u e" . elfeed)
    :map elfeed-show-mode-map
@@ -35,6 +36,10 @@
     (elfeed-org)
     :custom
     (rmh-elfeed-org-files (list "~/org/elfeed.org")))
+
+;; elfeed goodies
+(use-package elfeed-goodies :ensure t :config (setq elfeed-goodies/entry-pane-position 'bottom) (elfeed-goodies/setup))
+
 
 ;; Elfeed tube for youtube content
 (use-package elfeed-tube

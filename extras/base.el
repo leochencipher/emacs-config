@@ -138,6 +138,11 @@
   :ensure t
   :init (doom-modeline-mode 1))
 
+;; dirvish
+(use-package dirvish
+  :ensure t
+)
+
 
 ;; blink search
 (use-package blink-search 

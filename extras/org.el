@@ -321,3 +321,11 @@ installed."
   :ensure t
   :config
   (with-eval-after-load 'org (global-org-modern-mode)))
+
+
+(use-package org-supertag
+  :straight '(org-supertag :type git :host github :repo "yibie/org-supertag")
+  :config
+    (setq org-supertag-sync-directories '("~/org/"))
+)
+

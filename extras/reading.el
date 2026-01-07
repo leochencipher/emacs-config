@@ -12,12 +12,12 @@
   :ensure t
   :config
   (setq-default visual-fill-column-center-text t)
-  (setq-default visual-fill-column-width 120)
+  (setq-default visual-fill-column-width 160)
 )
 
 (defun my-nov-view-setup ()
-    (face-remap-add-relative 'variable-pitch :family "Bookerly"
-                                           :height 1.1))
+    (face-remap-add-relative 'variable-pitch :family "BookerlyPlus"
+                                           :height 1.2))
 
 (use-package nov
   :ensure t
@@ -42,3 +42,10 @@
   (setq nov-shr-rendering-functions (append nov-shr-rendering-functions shr-external-rendering-functions))
   (setq nov-text-width 100)
   )
+
+(use-package pdf-tools
+   :ensure t
+   :config
+   (pdf-tools-install)
+   (custom-set-variables          
+    '(pdf-tools-handle-upgrades t)))
