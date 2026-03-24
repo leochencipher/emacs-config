@@ -75,7 +75,9 @@
 	  (rust-mode       . rust-ts-mode)
 	  (lua-mode . lua-ts-mode)
 	  (go-mode       . go-ts-mode)
-          (python-mode . python-ts-mode)))
+          (python-mode . python-ts-mode)
+          (typescript-mode . typescript-ts-mode)
+	  ))
   :hook
   ;; Auto parenthesis matching
   ((prog-mode . electric-pair-mode)))

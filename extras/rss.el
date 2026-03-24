@@ -23,6 +23,8 @@
       ))
 
   (add-hook 'elfeed-show-mode-hook 'visual-line-mode)
+
+  (run-at-time nil (* 2 60 60) #'elfeed-update)
   :bind
   (("C-c u e" . elfeed)
    :map elfeed-show-mode-map
@@ -57,3 +59,4 @@
          :map elfeed-search-mode-map
          ("F" . elfeed-tube-fetch)
          ([remap save-buffer] . elfeed-tube-save)))
+

@@ -19,6 +19,11 @@
     (face-remap-add-relative 'variable-pitch :family "BookerlyPlus"
                                            :height 1.2))
 
+(use-package reader
+    :straight '(reader :type git :host codeberg :repo "MonadicSheep/emacs-reader"
+     		     :files ("*.el" "render-core.dylib")
+     		     :pre-build ("make" "all")))
+
 (use-package nov
   :ensure t
   :after
@@ -40,12 +45,6 @@
   (require 'shrface)
   (setq nov-shr-rendering-functions '((img . nov-render-img) (title . nov-render-title)))
   (setq nov-shr-rendering-functions (append nov-shr-rendering-functions shr-external-rendering-functions))
-  (setq nov-text-width 100)
+  (setq nov-text-width 130)
   )
 
-(use-package pdf-tools
-   :ensure t
-   :config
-   (pdf-tools-install)
-   (custom-set-variables          
-    '(pdf-tools-handle-upgrades t)))

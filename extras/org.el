@@ -44,7 +44,7 @@
 (setq org-directory "~/org/") ; Non-absolute paths for agenda and
                                         ; capture templates will look here.
 
-(setq org-agenda-files '("work.org" "todo.org"))
+(setq org-agenda-files '("work.org" "todo.org" "~/org/journal/"))
 
 ;; Default tags
 (setq org-tag-alist '(
@@ -269,7 +269,7 @@ installed."
   ;; template
   (setq denote-templates
       `((report . "* Some heading\n\n* Another heading")
-        (journal . "* Daily\n\n** Work\n\n** Side") 
+	(journal . "* Daily\n\n Today\n\n** Morning pages\nToday is going to be a great day because  \n** Work\n\n** Side\n\n** What is the most story worthy moment today")
         ))
 
   ;; OR if only want it in `denote-dired-directories':
@@ -322,10 +322,4 @@ installed."
   :config
   (with-eval-after-load 'org (global-org-modern-mode)))
 
-
-(use-package org-supertag
-  :straight '(org-supertag :type git :host github :repo "yibie/org-supertag")
-  :config
-    (setq org-supertag-sync-directories '("~/org/"))
-)
 

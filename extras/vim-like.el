@@ -35,4 +35,5 @@
   (evil-set-initial-state 'elfeed-show-mode 'emacs)
   (evil-set-initial-state 'ready-player-major-mode 'emacs)
   (evil-set-initial-state 'eww-mode 'emacs)
+  (evil-set-initial-state 'reader-mode 'emacs)
 )

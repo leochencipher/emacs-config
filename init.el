@@ -66,7 +66,8 @@
 ;; font setup
 (set-face-attribute 'default nil
                     ;; :family "IosevkaTermSS05 Nerd Font Mono + LXGW WenKai Mono Lite"
-                    :family "LXGW Bright Code"
+                    ;; :family "LXGW Bright Code"
+		    :family "Sarasa Term SC Nerd"
                     :height 160
                     )
 
@@ -215,12 +216,12 @@ If the new path's directories does not exist, create them."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package ef-themes
   :ensure t
-  :bind ("C-c t" . ef-themes-toggle)
+  :bind ("C-c t" . modus-themes-toggle)
   :init
   ;; set two specific themes and switch between them
   (setq modus-themes-to-toggle '(ef-melissa-light ef-owl))
   ;; set org headings and function syntax
-  (setq ef-themes-headings
+  (setq modus-themes-headings
         '((0 . (bold 1))
           (1 . (bold 1))
           (2 . (rainbow bold 1))
@@ -251,13 +252,7 @@ If the new path's directories does not exist, create them."
     (pcase appearance
       ('light (if (display-graphic-p) (ef-themes-load-random 'light) (ef-themes-load-random 'dark)))
       ('dark (ef-themes-load-random 'dark))))
-
-  (if (eq system-type 'darwin)
-      ;; only for emacs-plus
-      (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
-    (ef-themes-select 'ef-melissa-dark)
-    )
-  )
+)
 
 ;; (use-package emacs
 ;;  :config
