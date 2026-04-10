@@ -3,25 +3,42 @@
   :ensure t
   :bind ("C-c e" . gptel)
   :config
-  (defun get-ollama-models ()
-  "Fetch the list of installed Ollama models."
-  (let* ((output (shell-command-to-string "ollama list"))
-         (lines (split-string output "\n" t))
-         models)
-    (dolist (line (cdr lines))  ; Skip the first line
-      (when (string-match "^\\([^[:space:]]+\\)" line)
-        (push (match-string 1 line) models)))
-    (nreverse models)))
-
-  (gptel-make-ollama "rOllama"
-                 :host "192.168.1.28:11434"
-                 :stream t
-                 :models '(gemma3:latest))
-  (setq
-   gptel-model 'gemma3:latest
-   gptel-backend (gptel-make-ollama "Ollama"
-                 :host "localhost:11434"
-                 :stream t
-                 :models (get-ollama-models))))
+  (setq-default gptel-backend 
+                (gptel-make-ollama "Ollama" 
+                                   :host "localhost:11434" 
+                                   :stream t 
+                                   :models '(gemma4:e4b)))
+)
 
 
+
+
+(use-package minuet
+  :ensure t
+    :config
+    (setq minuet-provider 'openai-fim-compatible)
+    (setq minuet-n-completions 1) ; recommended for Local LLM for resource saving
+    ;; I recommend beginning with a small context window size and incrementally
+    ;; expanding it, depending on your local computing power. A context window
+    ;; of 512, serves as an good starting point to estimate your computing
+    ;; power. Once you have a reliable estimate of your local computing power,
+    ;; you should adjust the context window to a larger value.
+    (setq minuet-context-window 512)
+    (plist-put minuet-openai-fim-compatible-options :end-point "http://localhost:11434/v1/completions")
+    ;; an arbitrary non-null environment variable as placeholder.
+    ;; For Windows users, TERM may not be present in environment variables.
+    ;; Consider using APPDATA instead.
+    (plist-put minuet-openai-fim-compatible-options :name "Ollama")
+    (plist-put minuet-openai-fim-compatible-options :api-key "TERM")
+    (plist-put minuet-openai-fim-compatible-options :model "qwen2.5-coder:3b")
+
+    (minuet-set-optional-options minuet-openai-fim-compatible-options :max_tokens 56))
+
+
+(use-package agent-shell
+    :ensure t
+    :ensure-system-package
+    :bind-keymap ("C-c u a" . agent-shell)
+    ;; Add agent installation configs here
+    ((claude . "brew install claude-code")
+     (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp")))

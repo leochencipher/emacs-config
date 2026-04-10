@@ -329,7 +329,7 @@ If the new path's directories does not exist, create them."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-vc-selected-packages
-   '((speak-buffer :url "https://github.com/lorniu/speak-buffer.el"))))
+   '((claude-code :url "https://github.com/stevemolitor/claude-code.el"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
