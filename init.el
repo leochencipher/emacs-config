@@ -63,6 +63,20 @@
 ;; If you want to turn off the welcome screen, uncomment this
 (setq inhibit-splash-screen t)
 
+;; force left to right
+(setq-default bidi-display-reordering 'left-to-right
+              bidi-paragraph-direction 'left-to-right)
+(setq bidi-inhibit-bpa t)
+
+;; skip fontification when typing
+(setq redisplay-skip-fontification-on-input t)
+
+
+(setq read-process-output-max (* 4 1024 1024))
+
+(setq-default cursor-in-non-selected-windows nil)
+(setq highlight-nonselected-windows nil)
+
 ;; font setup
 (set-face-attribute 'default nil
                     ;; :family "IosevkaTermSS05 Nerd Font Mono + LXGW WenKai Mono Lite"

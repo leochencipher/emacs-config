@@ -161,10 +161,10 @@
 		    )))
     :bind
     ("<f7>" . vterm)
-    )
+)
 
 
 (use-package markdown-mermaid
-  :ensure (markdown-mermaid :type git :host github :repo "pasunboneleve/markdown-mermaid")
+  :straight (:type git :host github :repo "pasunboneleve/markdown-mermaid")
   :bind (:map markdown-mode-map
               ("C-c m" . markdown-mermaid-preview)))

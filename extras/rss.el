@@ -7,6 +7,12 @@
   (elfeed-show-entry-switch 'display-buffer)
   (elfeed-search-filter "@1-week-ago +unread")
   (browse-url-browser-function 'eww-browse-url)
+  (elfeed-search-remain-on-entry t)
+  (elfeed-search-title-max-width 100)
+  (elfeed-search-title-min-width 30)
+  (elfeed-search-trailing-width 25)
+  (elfeed-show-truncate-long-urls t)
+  (elfeed-sort-order 'descending)
   :config 
   (defun yt-dl-v-it ()
     "Downloads the URL in an async shell"
@@ -23,7 +29,9 @@
       ))
 
   (add-hook 'elfeed-show-mode-hook 'visual-line-mode)
-
+  (add-hook 'elfeed-new-entry-hook
+          (elfeed-make-tagger :entry-link "youtube\\.com/shorts/"
+                              :add '(junk shorts)))
   (run-at-time nil (* 2 60 60) #'elfeed-update)
   :bind
   (("C-c u e" . elfeed)
@@ -38,9 +46,6 @@
     (elfeed-org)
     :custom
     (rmh-elfeed-org-files (list "~/org/elfeed.org")))
-
-;; elfeed goodies
-(use-package elfeed-goodies :ensure t :config (setq elfeed-goodies/entry-pane-position 'bottom) (elfeed-goodies/setup))
 
 
 ;; Elfeed tube for youtube content

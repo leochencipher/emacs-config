@@ -8,7 +8,7 @@
   :custom
   (rime-librime-root "/opt/homebrew")
   ;; (rime-librime-root "~/.emacs.d/librime/dist") 
-  (rime-user-data-dir "~/.config/rime/rime-ice")
+  (rime-user-data-dir "~/Library/Rime")
 
   (rime-posframe-properties
       (list :background-color "#333333"
