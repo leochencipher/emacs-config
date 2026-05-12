@@ -144,25 +144,10 @@
   )
 
 
-;; vterm
-(use-package vterm
-    :ensure t
-    :commands vterm
-    :custom
-    (vterm-always-compile-module t)
-    :config
-        (define-key vterm-mode-map (kbd "C-y") 'vterm-yank)
-    :hook
-    (vterm-mode . (lambda ()
-		    ;; Settings to mimic dracula I use for zsh.
-		    (buffer-face-mode 1)
-		    (custom-set-faces
-		     '(vterm-face ((t (:family "BlexMono Nerd Font Mono" :height 90 :weight normal))))
-		    )))
-    :bind
-    ("<f7>" . vterm)
+(use-package ghostel
+  :ensure t
+  :bind ("C-c u t" . ghostel)
 )
-
 
 (use-package markdown-mermaid
   :straight (:type git :host github :repo "pasunboneleve/markdown-mermaid")

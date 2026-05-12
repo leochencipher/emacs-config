@@ -4,13 +4,13 @@
   :bind ("C-c e" . gptel)
   :config
   (setq-default gptel-backend 
-		(gptel-make-openai "LM Studio"
-		  :host "localhost:1234"
+		(gptel-make-openai "omlx"
+		  :host "localhost:8000"
 		  :protocol "http"
-		  :key "KEY_FOR_ACCESSING_OPENWEBUI"
+		  :key "chenshuo"
 		  :endpoint "/v1/chat/completions"
 		  :stream t
-		  :models '("huihui-qwen3.5-4b-claude-4.6-opus-abliterated"))
+		  :models '("gemma-4-e4b-it-4bit"))
 		)
   (setq-default gptel-default-mode 'org-mode)
 )

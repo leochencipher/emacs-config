@@ -28,11 +28,11 @@
       (start-process "DownloadAudio" nil "eda" (format "%s" (elfeed-entry-link elfeed-show-entry)))
       ))
 
-  (add-hook 'elfeed-show-mode-hook 'visual-line-mode)
-  (add-hook 'elfeed-new-entry-hook
-          (elfeed-make-tagger :entry-link "youtube\\.com/shorts/"
-                              :add '(junk shorts)))
   (run-at-time nil (* 2 60 60) #'elfeed-update)
+  :hook (elfeed-new-entry . (lambda (entry)
+                              (funcall (elfeed-make-tagger :entry-link "youtube\\.com/shorts/"
+                                                          :add '(junk shorts))
+                                       entry)))
   :bind
   (("C-c u e" . elfeed)
    :map elfeed-show-mode-map
