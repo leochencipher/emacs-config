@@ -29,11 +29,12 @@
   (evil-mode)
 
   ;; Configuring initial major mode for some modes
-  (evil-set-initial-state 'vterm-mode 'emacs)
+  (evil-set-initial-state 'ghostel-mode 'emacs)
   (evil-set-initial-state 'elfeed-search-mode 'emacs)
   (evil-set-initial-state 'nov-mode 'emacs)
   (evil-set-initial-state 'elfeed-show-mode 'emacs)
   (evil-set-initial-state 'ready-player-major-mode 'emacs)
   (evil-set-initial-state 'eww-mode 'emacs)
   (evil-set-initial-state 'reader-mode 'emacs)
+  (evil-set-initial-state 'agent-shell-viewport-view-mode 'emacs)
 )

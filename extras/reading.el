@@ -12,7 +12,7 @@
   :ensure t
   :config
   (setq-default visual-fill-column-center-text t)
-  (setq-default visual-fill-column-width 160)
+  (setq-default visual-fill-column-width 140)
 )
 
 (defun my-nov-view-setup ()
